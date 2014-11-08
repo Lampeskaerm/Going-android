@@ -21,6 +21,9 @@ import com.example.going_android.adapter.NavDrawerListAdapter;
 import com.example.going_android.model.NavDrawerItem;
 
 public class MainActivity extends Activity {
+	public static boolean isLoggedIn = false;
+	public static String SHOWN_FRAGMENT_TAG = "shownFragment";
+	
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -30,6 +33,7 @@ public class MainActivity extends Activity {
  
     // used to store app title
     private CharSequence mTitle;
+    private CharSequence mMenuTitle = "Menu";
  
     // slide menu items
     private String[] navMenuTitles;
@@ -83,7 +87,7 @@ public class MainActivity extends Activity {
                 R.string.app_name // nav drawer close - description for accessibility
         ){
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
+                getActionBar().setTitle(mMenuTitle);
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
             }
@@ -139,7 +143,7 @@ public class MainActivity extends Activity {
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
+                    .replace(R.id.frame_container, fragment, SHOWN_FRAGMENT_TAG).commit();
  
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
@@ -187,7 +191,7 @@ public class MainActivity extends Activity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getActionBar().setTitle(mTitle);
+        getActionBar().setTitle(mMenuTitle);
     }
  
     /**

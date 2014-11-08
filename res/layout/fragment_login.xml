@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80000000"
-    android:clickable="true">"
+    android:clickable="true">
 
     
 
@@ -16,7 +16,7 @@
         android:layout_marginTop="97dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email" />
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/password"
@@ -27,7 +27,7 @@
         android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Password" >
+        android:text="@string/password" >
 
         <requestFocus />
     </EditText>

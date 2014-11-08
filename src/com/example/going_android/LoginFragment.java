@@ -41,6 +41,9 @@ public class LoginFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Log.i("Login info", "Email: " + email.getText().toString() + "\n Password: " + password.getText().toString());
+				MainActivity.isLoggedIn = true;
+				getActivity().getFragmentManager().beginTransaction().remove(current).commit();
+				getActivity().getFragmentManager().beginTransaction().replace(com.example.going_android.R.id.frame_container, getActivity().getFragmentManager().findFragmentByTag(MainActivity.SHOWN_FRAGMENT_TAG));
 			}
 		});
         

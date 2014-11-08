@@ -24,8 +24,11 @@ public class RestaurantsFragment extends Fragment {
             Bundle savedInstanceState) {
   
         View rootView = inflater.inflate(R.layout.fragment_restaurants, container, false);
-        
         TextView loginText =(TextView) rootView.findViewById(R.id.loginLabel);
+        if(MainActivity.isLoggedIn){
+        	String logout = getResources().getString(R.string.logout);
+        	loginText.setText(logout);
+        }
         loginText.setOnClickListener(new OnClickListener() {
     		
         	@Override

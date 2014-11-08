@@ -1502,7 +1502,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080028;
         public static final int action_menu_presenter=0x7f080029;
         public static final int action_mode_close_button=0x7f080036;
-        public static final int action_settings=0x7f08005a;
+        public static final int action_settings=0x7f08005b;
         public static final int activity_chooser_view_content=0x7f080037;
         public static final int adView=0x7f080059;
         public static final int always=0x7f08001e;
@@ -1574,6 +1574,7 @@ containing a value of this type.
         public static final int submit_area=0x7f08004b;
         public static final int tabMode=0x7f080015;
         public static final int terrain=0x7f080003;
+        public static final int textView1=0x7f08005a;
         public static final int title=0x7f08003d;
         public static final int titleLabel=0x7f080057;
         public static final int top_action_bar=0x7f080032;
@@ -1640,7 +1641,8 @@ containing a value of this type.
         public static final int fragment_login=0x7f03001b;
         public static final int fragment_restaurants=0x7f03001c;
         public static final int fragment_supermarkets=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int fragment_user=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1688,8 +1690,10 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f06002e;
         public static final int accept=0x7f060002;
         public static final int action_settings=0x7f060031;
+        /**  Global Strings 
+         */
         public static final int app_name=0x7f060030;
-        public static final int cancel=0x7f060035;
+        public static final int cancel=0x7f060036;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
         public static final int common_android_wear_notification_needs_update_text=0x7f060009;
@@ -1794,17 +1798,23 @@ containing a value of this type.
         public static final int decline=0x7f060003;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f060037;
+        public static final int desc_list_item_icon=0x7f06003b;
         public static final int drawer_close=0x7f060033;
         public static final int drawer_open=0x7f060032;
-        /**  Global Strings 
+        public static final int email=0x7f060037;
+        /**  Login Strings 
          */
-        public static final int login=0x7f060034;
+        public static final int login=0x7f060035;
+        public static final int logout=0x7f060034;
+        public static final int password=0x7f060038;
         /**  Restaurant Strings 
          */
-        public static final int restaurantTitle=0x7f060036;
+        public static final int restaurantTitle=0x7f06003a;
         public static final int store_picture_message=0x7f060001;
         public static final int store_picture_title=0x7f060000;
+        /**  User Strings 
+         */
+        public static final int userTitle=0x7f060039;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
