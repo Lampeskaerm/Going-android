@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple">#AA66CC</color>
+    <color name="list_elem_bg">#AA66CC</color>
+    <color name="list_elem_bg_pressed">#9933CC</color>
+    <color name="counter_text_bg">#FFBB33</color>
+    <color name="nav_list_bg">#9933CC</color>
+    <color name="nav_list_divider">#000000</color>
+    <color name="restaurants_bg">#ff6666</color>
+    <color name="restaurants_text">#ffffff</color>
+</resources>
