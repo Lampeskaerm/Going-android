@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.going_android.adapter.NavDrawerListAdapter;
 import com.example.going_android.model.NavDrawerItem;
@@ -23,9 +24,12 @@ import com.example.going_android.model.NavDrawerItem;
 public class MainActivity extends Activity {
 	public static boolean isLoggedIn = false;
 	public static String SHOWN_FRAGMENT_TAG = "shownFragment";
+	public static String HEADER_FRAGMENT_TAG = "headerFragment";
 	
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+    private ListView mDrawerListTop;
+    private ListView mDrawerListBottom;
+    private View mDrawerView;
     private ActionBarDrawerToggle mDrawerToggle;
  
     // nav drawer title
@@ -40,6 +44,7 @@ public class MainActivity extends Activity {
     private TypedArray navMenuIcons;
  
     private ArrayList<NavDrawerItem> navDrawerItems;
+    private ArrayList<NavDrawerItem> navDrawerItemsBottom;
     private NavDrawerListAdapter adapter;
  
     @Override
@@ -57,17 +62,23 @@ public class MainActivity extends Activity {
                 .obtainTypedArray(R.array.nav_drawer_icons);
  
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+        mDrawerListTop = (ListView) findViewById(R.id.list_menucontentTop);
+        mDrawerListBottom = (ListView) findViewById(R.id.list_menucontentBottom);
+        mDrawerView =  (View) findViewById(R.id.list_slidermenu);
  
         navDrawerItems = new ArrayList<NavDrawerItem>();
- 
+        navDrawerItemsBottom = new ArrayList<NavDrawerItem>();
+        
         // adding nav drawer items to array
-        // Home
+        // Restaurants
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find People
+        // Bars
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Photos
+        // Supermarkets
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        
+        //Login
+        navDrawerItemsBottom.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0,-1)));
         
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -75,7 +86,8 @@ public class MainActivity extends Activity {
         // setting the nav drawer list adapter
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
-        mDrawerList.setAdapter(adapter);
+        mDrawerListTop.setAdapter(adapter);
+        mDrawerListBottom.setAdapter(adapter);
  
         // enabling action bar app icon and behaving it as toggle button
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,12 +111,25 @@ public class MainActivity extends Activity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
- 
+        
+        	
+        /**
+         * At startup
+         */
+        
         if (savedInstanceState == null) {
             // on first time display view for first nav item
             displayView(0);
         }
-        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+        mDrawerListTop.setOnItemClickListener(new SlideMenuClickListener());
+        
+        
+        /**************************
+         * Setting initial header *
+         **************************/
+        Fragment headerFragment = new HeaderFragment();
+        FragmentManager fm = getFragmentManager();
+        fm.beginTransaction().replace(R.id.frame_mainheadercontainer, headerFragment, HEADER_FRAGMENT_TAG).commit();
     }
  
     /**
@@ -128,12 +153,15 @@ public class MainActivity extends Activity {
         switch (position) {
         case 0:
             fragment = new RestaurantsFragment();
+            SHOWN_FRAGMENT_TAG = "restaurants";
             break;
         case 1:
             fragment = new BarsFragment();
+            SHOWN_FRAGMENT_TAG = "bars";
             break;
         case 2:
             fragment = new SupermarketsFragment();
+            SHOWN_FRAGMENT_TAG = "supermarkets";
             break;
  
         default:
@@ -143,13 +171,15 @@ public class MainActivity extends Activity {
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment, SHOWN_FRAGMENT_TAG).commit();
+                    .replace(R.id.frame_mainviewcontainer, fragment, SHOWN_FRAGMENT_TAG).commit();
+            
+            getFragmentManager().executePendingTransactions();
  
             // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
+            mDrawerListTop.setItemChecked(position, true);
+            mDrawerListTop.setSelection(position);
             setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+            mDrawerLayout.closeDrawer(mDrawerView);
         } else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
@@ -183,7 +213,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerView);
         menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }

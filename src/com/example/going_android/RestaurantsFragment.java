@@ -15,7 +15,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 public class RestaurantsFragment extends Fragment {
-
+	View rootView;
+	
 	public RestaurantsFragment() {
 	}
 
@@ -23,23 +24,9 @@ public class RestaurantsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
   
-        View rootView = inflater.inflate(R.layout.fragment_restaurants, container, false);
-        TextView loginText =(TextView) rootView.findViewById(R.id.loginLabel);
-        if(MainActivity.isLoggedIn){
-        	String logout = getResources().getString(R.string.logout);
-        	loginText.setText(logout);
-        }
-        loginText.setOnClickListener(new OnClickListener() {
-    		
-        	@Override
-        	public void onClick(View v) {
-        		Log.e("Click","Login has been clicked");
-
-        		Fragment loginFragment = new LoginFragment();
-        		FragmentManager fm = getFragmentManager();
-        		fm.beginTransaction().add(com.example.going_android.R.id.frame_container, loginFragment).commit();
-        	}
-		});
+        rootView = inflater.inflate(R.layout.fragment_restaurants, container, false);
+        Fragment current = this;
+        
         /*
         AdView adView = (AdView)rootView.findViewById(R.id.adView);
         adView.setAdListener(new AdListener(){
@@ -53,4 +40,10 @@ public class RestaurantsFragment extends Fragment {
         
         return rootView;
     }
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		System.out.println("ONRESUME!!!");
+	}
 }

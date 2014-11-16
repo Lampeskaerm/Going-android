@@ -8,4 +8,5 @@
     <color name="nav_list_divider">#000000</color>
     <color name="restaurants_bg">#ff6666</color>
     <color name="restaurants_text">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

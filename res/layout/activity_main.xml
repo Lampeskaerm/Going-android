@@ -3,22 +3,54 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
- 
-    <!-- Framelayout to display mainview Fragments -->
-    <FrameLayout
-        android:id="@+id/frame_container"
+    
+    <RelativeLayout
+        android:id="@+id/frame_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        
+        <FrameLayout 
+            android:id="@+id/frame_mainheadercontainer"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content" />
+        
+        <FrameLayout
+            android:id="@+id/frame_mainviewcontainer"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_below="@+id/frame_mainheadercontainer"
+	        android:layout_alignParentBottom="true"
+	        android:layout_gravity="bottom"/>
+        
+    </RelativeLayout>
  
     <!-- Listview to display slider menu -->
-    <ListView
+    <RelativeLayout
         android:id="@+id/list_slidermenu"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@color/nav_list_divider"
-        android:dividerHeight="1dp"       
-        android:listSelector="@drawable/list_selector"
-        android:background="@color/nav_list_bg"/>
+	    android:layout_width="240dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="start">        
+	    
+	    <ListView
+	        android:id="@+id/list_menucontentTop"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+	        android:layout_gravity="start"
+	        android:choiceMode="singleChoice"
+	        android:divider="@color/nav_list_divider"
+	        android:dividerHeight="1dp"       
+	        android:listSelector="@drawable/list_selector"
+	        android:background="@color/nav_list_bg"/>
+	   <ListView
+	        android:id="@+id/list_menucontentBottom"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+	        android:choiceMode="singleChoice"
+	        android:divider="@color/nav_list_divider"
+	        android:dividerHeight="1dp"       
+	        android:listSelector="@drawable/list_selector"
+	        android:background="@color/nav_list_bg"
+	        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    
 </android.support.v4.widget.DrawerLayout>

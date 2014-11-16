@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class LoginFragment extends Fragment {
+	
 	public LoginFragment() {
 		
 	}
@@ -37,13 +38,11 @@ public class LoginFragment extends Fragment {
 		});
         
         loginBtn.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Log.i("Login info", "Email: " + email.getText().toString() + "\n Password: " + password.getText().toString());
 				MainActivity.isLoggedIn = true;
-				getActivity().getFragmentManager().beginTransaction().remove(current).commit();
-				getActivity().getFragmentManager().beginTransaction().replace(com.example.going_android.R.id.frame_container, getActivity().getFragmentManager().findFragmentByTag(MainActivity.SHOWN_FRAGMENT_TAG));
+				getActivity().getFragmentManager().popBackStack();
 			}
 		});
         
