@@ -20,16 +20,6 @@ public class HeaderFragment extends Fragment {
 		
 		View rootView = inflater.inflate(R.layout.fragment_header, container, false);
 		
-		TextView loginText =(TextView) rootView.findViewById(R.id.loginLabel);
-		
-        loginText.setOnClickListener(new OnClickListener() {
-        	@Override
-        	public void onClick(View v) {
-        		Fragment loginFragment = new LoginFragment();
-        		FragmentManager fm = getFragmentManager();
-        		fm.beginTransaction().add(R.id.frame_content, loginFragment).addToBackStack("").commit();
-        	}
-		});
 		
 		return rootView;
 	}

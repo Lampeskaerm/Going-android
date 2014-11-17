@@ -44,7 +44,7 @@
 	   <ListView
 	        android:id="@+id/list_menucontentBottom"
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
+		    android:layout_height="wrap_content"
 	        android:choiceMode="singleChoice"
 	        android:divider="@color/nav_list_divider"
 	        android:dividerHeight="1dp"       

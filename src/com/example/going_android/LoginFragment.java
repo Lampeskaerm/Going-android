@@ -9,11 +9,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class LoginFragment extends Fragment {
-	
-	public LoginFragment() {
-		
+	private View clickedView;
+	public LoginFragment(View view) {
+		clickedView = view;
 	}
 
 	@Override
@@ -43,6 +44,8 @@ public class LoginFragment extends Fragment {
 				Log.i("Login info", "Email: " + email.getText().toString() + "\n Password: " + password.getText().toString());
 				MainActivity.isLoggedIn = true;
 				getActivity().getFragmentManager().popBackStack();
+				TextView loginText = (TextView) clickedView.findViewById(R.id.title);
+				loginText.setText(R.string.logout);
 			}
 		});
         

@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.going_android.adapter.NavDrawerListAdapter;
 import com.example.going_android.model.NavDrawerItem;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity {
     private ArrayList<NavDrawerItem> navDrawerItems;
     private ArrayList<NavDrawerItem> navDrawerItemsBottom;
     private NavDrawerListAdapter adapter;
+    private NavDrawerListAdapter adapterBottom;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +73,11 @@ public class MainActivity extends Activity {
         
         // adding nav drawer items to array
         // Restaurants
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(0, -1)));
         // Bars
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(1, -1)));
         // Supermarkets
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(2, -1)));
         
         //Login
         navDrawerItemsBottom.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0,-1)));
@@ -86,8 +88,10 @@ public class MainActivity extends Activity {
         // setting the nav drawer list adapter
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
+        adapterBottom = new NavDrawerListAdapter(getApplicationContext(),
+        		navDrawerItemsBottom);
         mDrawerListTop.setAdapter(adapter);
-        mDrawerListBottom.setAdapter(adapter);
+        mDrawerListBottom.setAdapter(adapterBottom);
  
         // enabling action bar app icon and behaving it as toggle button
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -122,6 +126,7 @@ public class MainActivity extends Activity {
             displayView(0);
         }
         mDrawerListTop.setOnItemClickListener(new SlideMenuClickListener());
+        mDrawerListBottom.setOnItemClickListener(new LoginClickListener());
         
         
         /**************************
@@ -144,6 +149,35 @@ public class MainActivity extends Activity {
             displayView(position);
         }
     }
+    
+    /**
+     * Login menu item click listener
+     */
+    
+    private class LoginClickListener implements
+    		ListView.OnItemClickListener {
+    	@Override
+    	public void onItemClick(AdapterView<?> parent, View view, int position, 
+    			long id) {
+    		
+    		TextView loginText = (TextView) view.findViewById(R.id.title);
+    		
+    		if(isLoggedIn){
+    			//Set User to null here
+    			loginText.setText(getResources().getString(R.string.login));
+    			isLoggedIn = false;
+                mDrawerLayout.closeDrawer(mDrawerView);
+    		} else {
+
+        		Fragment loginFragment = new LoginFragment(view);
+        		FragmentManager fm = getFragmentManager();
+        		fm.beginTransaction().add(R.id.frame_content, loginFragment).addToBackStack("").commit();
+        		
+                mDrawerLayout.closeDrawer(mDrawerView);
+    		}
+    	}
+    }
+    
     /**
      * Diplaying fragment view for selected nav drawer list item
      * */
@@ -173,6 +207,7 @@ public class MainActivity extends Activity {
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_mainviewcontainer, fragment, SHOWN_FRAGMENT_TAG).commit();
             
+            //Execute the transaction so the fragmentmanager is updated
             getFragmentManager().executePendingTransactions();
  
             // update selected item and title, then close the drawer
