@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.going_android"
+    package="com.going.android"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -20,8 +20,12 @@
 		    android:name="com.google.android.gms.version"
 		    android:value="@integer/google_play_services_version" />
         
+        <meta-data 
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+        
         <activity
-            android:name="com.example.going_android.MainActivity"
+            android:name="com.going.android.MainActivity"
         	android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
@@ -35,6 +39,10 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
 			android:theme="@android:style/Theme.Translucent"/>
         
+        <activity
+		    android:name="com.facebook.LoginActivity"
+		    android:label="@string/title_facebook_login" >
+		</activity>
     </application>
 
 </manifest>

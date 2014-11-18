@@ -33,16 +33,17 @@
     </EditText>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/btnCancel"
+        android:layout_alignBottom="@+id/btnCancel"
         android:layout_alignLeft="@+id/password"
-        android:text="Log in" />
+        android:text="@string/login" 
+        android:background="@color/btnColor"/>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/password"
@@ -50,6 +51,16 @@
         android:layout_marginTop="94dp"
         android:clickable="true"
         android:onClick="onClick"
-        android:text="@string/cancel" />
+        android:text="@string/cancel" 
+        android:background="@color/btnColor"/>
+    
+    <com.facebook.widget.LoginButton
+        android:id="@+id/authButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnCancel"
+        />
     
 </RelativeLayout>

@@ -16,17 +16,5 @@
         android:textColor="@color/restaurants_text"
         android:textStyle="bold"
         android:gravity="top"/>
-    
-    <TextView
-        	android:id="@+id/loginLabel"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_alignParentRight="true"
-        	android:layout_marginRight="20dp"
-        	android:layout_marginTop="22dp"
-        	android:textSize="18sp"
-        	android:text="@string/login"
-        	android:onClick="onClick"                
-        	android:clickable="true"/>
 
 </RelativeLayout>
