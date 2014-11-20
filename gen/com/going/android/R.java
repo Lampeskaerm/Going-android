@@ -1785,17 +1785,16 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050033;
         public static final int action_menu_presenter=0x7f050034;
         public static final int action_mode_close_button=0x7f050041;
-        public static final int action_settings=0x7f050084;
+        public static final int action_settings=0x7f050081;
         public static final int activity_chooser_view_content=0x7f050042;
-        public static final int adView=0x7f050082;
+        public static final int adView=0x7f05007f;
         public static final int always=0x7f050029;
-        public static final int authButton=0x7f050081;
+        public static final int authButton=0x7f05007d;
         public static final int beginning=0x7f05002e;
         public static final int book_now=0x7f05001b;
         public static final int bottom=0x7f050006;
         public static final int box_count=0x7f050005;
-        public static final int btnCancel=0x7f050080;
-        public static final int btnLogin=0x7f05007f;
+        public static final int btnCancel=0x7f05007e;
         public static final int button=0x7f050004;
         public static final int buyButton=0x7f050015;
         public static final int buy_now=0x7f05001a;
@@ -1836,7 +1835,6 @@ containing a value of this type.
         public static final int drawer_layout=0x7f050059;
         public static final int dropdown=0x7f05002d;
         public static final int edit_query=0x7f05004d;
-        public static final int email=0x7f05007d;
         public static final int end=0x7f050030;
         public static final int expand_activities_button=0x7f050043;
         public static final int expanded_menu=0x7f050049;
@@ -1866,7 +1864,6 @@ containing a value of this type.
         public static final int never=0x7f050027;
         public static final int none=0x7f05000c;
         public static final int normal=0x7f050001;
-        public static final int password=0x7f05007e;
         public static final int picker_subtitle=0x7f05006f;
         public static final int production=0x7f050012;
         public static final int progress_circular=0x7f050035;
@@ -1897,7 +1894,7 @@ containing a value of this type.
         public static final int submit_area=0x7f050056;
         public static final int tabMode=0x7f050020;
         public static final int terrain=0x7f05000e;
-        public static final int textView1=0x7f050083;
+        public static final int textView1=0x7f050080;
         public static final int title=0x7f050048;
         public static final int titleLabel=0x7f05007c;
         public static final int top=0x7f050008;

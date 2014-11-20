@@ -2,14 +2,11 @@ package com.going.android;
 
 import com.going.android.R;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class HeaderFragment extends Fragment {
 	

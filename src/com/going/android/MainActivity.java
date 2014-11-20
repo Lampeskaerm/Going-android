@@ -1,23 +1,15 @@
 package com.going.android;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,12 +18,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.going.android.R;
 import com.facebook.AppEventsLogger;
 import com.going.android.adapter.NavDrawerListAdapter;
 import com.going.android.model.NavDrawerItem;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	public static boolean isLoggedIn = false;
 	public static String SHOWN_FRAGMENT_TAG = "shownFragment";
 	public static String HEADER_FRAGMENT_TAG = "headerFragment";
@@ -57,7 +48,7 @@ public class MainActivity extends Activity {
     private ArrayList<NavDrawerItem> navDrawerItemsBottom;
     private NavDrawerListAdapter adapter;
     private NavDrawerListAdapter adapterBottom;
- 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,7 +133,7 @@ public class MainActivity extends Activity {
          * Setting initial header *
          **************************/
         Fragment headerFragment = new HeaderFragment();
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.frame_mainheadercontainer, headerFragment, HEADER_FRAGMENT_TAG).commit();
     }
  
@@ -168,22 +159,13 @@ public class MainActivity extends Activity {
     	@Override
     	public void onItemClick(AdapterView<?> parent, View view, int position, 
     			long id) {
-    		
-    		TextView loginText = (TextView) view.findViewById(R.id.title);
-    		
-    		if(isLoggedIn){
-    			//Set User to null here
-    			loginText.setText(getResources().getString(R.string.login));
-    			isLoggedIn = false;
-                mDrawerLayout.closeDrawer(mDrawerView);
-    		} else {
 
-        		Fragment loginFragment = new LoginFragment(view);
-        		FragmentManager fm = getFragmentManager();
-        		fm.beginTransaction().add(R.id.frame_content, loginFragment).addToBackStack("").commit();
+    		Fragment loginFragment = new LoginFragment(view);
+    		FragmentManager fm = getSupportFragmentManager();
+    		
+    		fm.beginTransaction().add(R.id.frame_content, loginFragment).addToBackStack("login").commit();
         		
-                mDrawerLayout.closeDrawer(mDrawerView);
-    		}
+            mDrawerLayout.closeDrawer(mDrawerView);
     	}
     }
     
@@ -212,7 +194,7 @@ public class MainActivity extends Activity {
         }
  
         if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_mainviewcontainer, fragment, SHOWN_FRAGMENT_TAG).commit();
             
@@ -298,7 +280,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
       super.onPause();
-
       // Logs 'app deactivate' App Event.
       AppEventsLogger.deactivateApp(this);
     }
