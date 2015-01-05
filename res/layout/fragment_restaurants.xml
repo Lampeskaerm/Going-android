@@ -2,12 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/restaurants_bg"
+    android:background="@color/restaurantPrimary500"
     xmlns:ads="http://schemas.android.com/apk/res-auto">
+    
+    <RelativeLayout 
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/titleLabel">
+        
+        <TextView 
+        	android:layout_width="200dp"
+        	android:layout_height="wrap_content"
+        	android:text="@string/restaurantMenuButton1"
+        	android:textColor="@color/white_text"
+        	/>
+        
+    </RelativeLayout>
          
     <ImageView android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@id/titleLabel"
+        android:layout_below="@id/menu"
         android:src="@drawable/ic_home"
         android:layout_centerInParent="true"/>
     

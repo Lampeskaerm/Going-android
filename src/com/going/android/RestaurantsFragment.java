@@ -1,15 +1,12 @@
 package com.going.android;
 
-import android.support.v4.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.going.android.R;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 public class RestaurantsFragment extends Fragment {
 	View rootView;
@@ -23,7 +20,6 @@ public class RestaurantsFragment extends Fragment {
   
         rootView = inflater.inflate(R.layout.fragment_restaurants, container, false);
         Fragment current = this;
-        
         /*
         AdView adView = (AdView)rootView.findViewById(R.id.adView);
         adView.setAdListener(new AdListener(){

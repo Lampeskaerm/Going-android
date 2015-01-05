@@ -14,16 +14,15 @@ import android.widget.TextView;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
-//import android.view.View.OnClickListener;
-//import android.widget.Button;
-//import android.widget.EditText;
 
 public class LoginFragment extends Fragment {
 	private View clickedView;
 	private UiLifecycleHelper uiHelper;
 	private static final String TAG = "LoginFragment";
 	private Fragment current;
+	public static GraphUser user;
 	
 	private Session.StatusCallback callback = new Session.StatusCallback() {
 	    @Override
@@ -79,6 +78,17 @@ public class LoginFragment extends Fragment {
         LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
         authButton.setFragment(this);
         authButton.setReadPermissions(Arrays.asList("user_likes", "user_status"));
+        authButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
+			
+			@Override
+			public void onUserInfoFetched(GraphUser user) {
+				LoginFragment.user = user;
+				if(user == null)
+					Log.d("User", "Null");
+				else
+					Log.d("User", user.getName());
+			}
+		});
 
         
         return rootView;
@@ -129,10 +139,10 @@ public class LoginFragment extends Fragment {
 		
 		if(MainActivity.isLoggedIn){
 			MainActivity.isLoggedIn = false;
-			loginText.setText(R.string.logout);
+			loginText.setText(R.string.login);
 		} else {
 			MainActivity.isLoggedIn = true;
-			loginText.setText(R.string.login);
+			loginText.setText(R.string.logout);
 		}
 		
 		getActivity().getSupportFragmentManager().beginTransaction().remove(current).commit();

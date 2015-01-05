@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="restaurantPrimary500">#FFC107</color>
+    <color name="restaurantPrimary100">#FFECB3</color>
+    <color name="restaurantPrimary700">#FFA000</color>
+</resources>

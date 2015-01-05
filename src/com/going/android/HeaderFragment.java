@@ -19,6 +19,8 @@ public class HeaderFragment extends Fragment {
 		
 		View rootView = inflater.inflate(R.layout.fragment_header, container, false);
 		
+		rootView.setBackgroundColor(MainActivity.headerColor);
+		MainActivity.headerView = rootView;
 		
 		return rootView;
 	}

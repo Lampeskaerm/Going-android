@@ -37,19 +37,19 @@
 		    android:layout_height="match_parent"
 	        android:layout_gravity="start"
 	        android:choiceMode="singleChoice"
-	        android:divider="@color/nav_list_divider"
+	        android:divider="@color/white_dividers"
 	        android:dividerHeight="1dp"       
 	        android:listSelector="@drawable/list_selector"
-	        android:background="@color/nav_list_bg"/>
+	        android:background="@color/primary500"/>
 	   <ListView
 	        android:id="@+id/list_menucontentBottom"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 	        android:choiceMode="singleChoice"
-	        android:divider="@color/nav_list_divider"
+	        android:divider="@color/black_dividers"
 	        android:dividerHeight="1dp"       
 	        android:listSelector="@drawable/list_selector"
-	        android:background="@color/nav_list_bg"
+	        android:background="@color/white_dividers"
 	        android:layout_alignParentBottom="true"/>
     </RelativeLayout>
     

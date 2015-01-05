@@ -1377,12 +1377,21 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f0b0002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f07002f;
+        public static final int abc_search_url_text_holo=0x7f070036;
         public static final int abc_search_url_text_normal=0x7f070022;
         public static final int abc_search_url_text_pressed=0x7f070024;
         public static final int abc_search_url_text_selected=0x7f070023;
-        public static final int black=0x7f07002d;
-        public static final int btnColor=0x7f07002e;
+        public static final int accent100=0x7f07002a;
+        /**  Secondary Colors 
+         */
+        public static final int accent200=0x7f070028;
+        public static final int accent700=0x7f070029;
+        public static final int black_disabled=0x7f07002d;
+        public static final int black_dividers=0x7f07002e;
+        public static final int black_secondary_text=0x7f07002c;
+        /**  Black alphavalues 
+         */
+        public static final int black_text=0x7f07002b;
         public static final int com_facebook_blue=0x7f070002;
         public static final int com_facebook_likeboxcountview_border_color=0x7f070009;
         public static final int com_facebook_likeboxcountview_text_color=0x7f07000a;
@@ -1406,16 +1415,16 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f070011;
         public static final int common_signin_btn_light_text_focused=0x7f070012;
         public static final int common_signin_btn_light_text_pressed=0x7f070010;
-        public static final int common_signin_btn_text_dark=0x7f070030;
-        public static final int common_signin_btn_text_light=0x7f070031;
-        public static final int counter_text_bg=0x7f070028;
-        public static final int list_elem_bg=0x7f070026;
-        public static final int list_elem_bg_pressed=0x7f070027;
-        public static final int nav_list_bg=0x7f070029;
-        public static final int nav_list_divider=0x7f07002a;
-        public static final int purple=0x7f070025;
-        public static final int restaurants_bg=0x7f07002b;
-        public static final int restaurants_text=0x7f07002c;
+        public static final int common_signin_btn_text_dark=0x7f070037;
+        public static final int common_signin_btn_text_light=0x7f070038;
+        public static final int primary100=0x7f070026;
+        /**  Primary Colors 
+         */
+        public static final int primary500=0x7f070025;
+        public static final int primary700=0x7f070027;
+        public static final int restaurantPrimary100=0x7f070034;
+        public static final int restaurantPrimary500=0x7f070033;
+        public static final int restaurantPrimary700=0x7f070035;
         public static final int wallet_bright_foreground_disabled_holo_light=0x7f07001a;
         /** 
          Wallet colors to support consistent Wallet fragment holo dark UI in client application
@@ -1434,8 +1443,14 @@ containing a value of this type.
         public static final int wallet_hint_foreground_holo_light=0x7f07001c;
         public static final int wallet_holo_blue_light=0x7f070020;
         public static final int wallet_link_text_light=0x7f070021;
-        public static final int wallet_primary_text_holo_light=0x7f070032;
-        public static final int wallet_secondary_text_holo_dark=0x7f070033;
+        public static final int wallet_primary_text_holo_light=0x7f070039;
+        public static final int wallet_secondary_text_holo_dark=0x7f07003a;
+        public static final int white_disabled=0x7f070031;
+        public static final int white_dividers=0x7f070032;
+        public static final int white_secondary_text=0x7f070030;
+        /**  White alphavalues 
+         */
+        public static final int white_text=0x7f07002f;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1785,9 +1800,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050033;
         public static final int action_menu_presenter=0x7f050034;
         public static final int action_mode_close_button=0x7f050041;
-        public static final int action_settings=0x7f050081;
+        public static final int action_settings=0x7f050082;
         public static final int activity_chooser_view_content=0x7f050042;
-        public static final int adView=0x7f05007f;
+        public static final int adView=0x7f050080;
         public static final int always=0x7f050029;
         public static final int authButton=0x7f05007d;
         public static final int beginning=0x7f05002e;
@@ -1859,6 +1874,7 @@ containing a value of this type.
         public static final int list_menucontentTop=0x7f05005e;
         public static final int list_slidermenu=0x7f05005d;
         public static final int match_parent=0x7f050017;
+        public static final int menu=0x7f05007f;
         public static final int middle=0x7f05002f;
         public static final int monochrome=0x7f05001e;
         public static final int never=0x7f050027;
@@ -1894,7 +1910,7 @@ containing a value of this type.
         public static final int submit_area=0x7f050056;
         public static final int tabMode=0x7f050020;
         public static final int terrain=0x7f05000e;
-        public static final int textView1=0x7f050080;
+        public static final int textView1=0x7f050081;
         public static final int title=0x7f050048;
         public static final int titleLabel=0x7f05007c;
         public static final int top=0x7f050008;
@@ -2176,6 +2192,7 @@ containing a value of this type.
         public static final int login=0x7f080052;
         public static final int logout=0x7f080051;
         public static final int password=0x7f080055;
+        public static final int restaurantMenuButton1=0x7f08005b;
         public static final int restaurantTitle=0x7f08005a;
         public static final int store_picture_message=0x7f08001e;
         public static final int store_picture_title=0x7f08001d;

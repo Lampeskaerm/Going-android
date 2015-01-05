@@ -2,5 +2,6 @@
 <resources>
     
     <string name="restaurantTitle">Going Eating</string>
+    <string name="restaurantMenuButton1">Søg</string>
     
 </resources>

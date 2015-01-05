@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.AppEventsLogger;
+import com.going.android.R.color;
 import com.going.android.adapter.NavDrawerListAdapter;
 import com.going.android.model.NavDrawerItem;
 
@@ -26,6 +28,8 @@ public class MainActivity extends FragmentActivity {
 	public static boolean isLoggedIn = false;
 	public static String SHOWN_FRAGMENT_TAG = "shownFragment";
 	public static String HEADER_FRAGMENT_TAG = "headerFragment";
+	public static View headerView;
+	public static int headerColor;
 	
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListTop;
@@ -48,6 +52,7 @@ public class MainActivity extends FragmentActivity {
     private ArrayList<NavDrawerItem> navDrawerItemsBottom;
     private NavDrawerListAdapter adapter;
     private NavDrawerListAdapter adapterBottom;
+    
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +125,14 @@ public class MainActivity extends FragmentActivity {
         /**
          * At startup
          */
+
+        /**************************
+         * Setting initial header *
+         **************************/
+        Fragment headerFragment = new HeaderFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.frame_mainheadercontainer, headerFragment, HEADER_FRAGMENT_TAG).commit();
+        fm.executePendingTransactions();
         
         if (savedInstanceState == null) {
             // on first time display view for first nav item
@@ -128,13 +141,6 @@ public class MainActivity extends FragmentActivity {
         mDrawerListTop.setOnItemClickListener(new SlideMenuClickListener());
         mDrawerListBottom.setOnItemClickListener(new LoginClickListener());
         
-        
-        /**************************
-         * Setting initial header *
-         **************************/
-        Fragment headerFragment = new HeaderFragment();
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.frame_mainheadercontainer, headerFragment, HEADER_FRAGMENT_TAG).commit();
     }
  
     /**
@@ -178,15 +184,18 @@ public class MainActivity extends FragmentActivity {
         switch (position) {
         case 0:
             fragment = new RestaurantsFragment();
-            SHOWN_FRAGMENT_TAG = "restaurants";
+            SHOWN_FRAGMENT_TAG = "restaurant";
+            headerColor = getResources().getColor(R.color.restaurantPrimary700);
             break;
         case 1:
             fragment = new BarsFragment();
-            SHOWN_FRAGMENT_TAG = "bars";
+            SHOWN_FRAGMENT_TAG = "bar";
+            headerColor = Color.WHITE;
             break;
         case 2:
             fragment = new SupermarketsFragment();
-            SHOWN_FRAGMENT_TAG = "supermarkets";
+            SHOWN_FRAGMENT_TAG = "supermarket";
+            headerColor = Color.WHITE;
             break;
  
         default:
@@ -194,13 +203,19 @@ public class MainActivity extends FragmentActivity {
         }
  
         if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
+            FragmentManager fm = getSupportFragmentManager();
+            Fragment headerFragment = fm.findFragmentByTag(HEADER_FRAGMENT_TAG);
+            fm.beginTransaction()
                     .replace(R.id.frame_mainviewcontainer, fragment, SHOWN_FRAGMENT_TAG).commit();
             
             //Execute the transaction so the fragmentmanager is updated
-            getFragmentManager().executePendingTransactions();
- 
+            fm.executePendingTransactions();
+            
+            //We have to check that the view has been created before we can change the BG color
+            if(headerView != null){
+            	headerView.setBackgroundColor(headerColor);
+            }
+            
             // update selected item and title, then close the drawer
             mDrawerListTop.setItemChecked(position, true);
             mDrawerListTop.setSelection(position);

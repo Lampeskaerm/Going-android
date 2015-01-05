@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/restaurants_bg">
+    android:background="@color/primary500">
 
     <TextView
         android:id="@+id/titleLabel"
@@ -11,9 +11,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:textSize="24sp"
         android:text="@string/restaurantTitle"
-        android:textColor="@color/restaurants_text"
+        android:textColor="@color/white_text"
         android:textStyle="bold"
         android:gravity="top"/>
 
